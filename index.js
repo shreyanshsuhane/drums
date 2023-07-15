@@ -5,10 +5,13 @@ document.addEventListener("keypress",function (Event) {
     console.log(Event.key);
 })
 for (let index = 0; index < buttons.length; index++) {
+    
+        
     buttons[index].addEventListener("click",function () {
         //alert("Button "+(index+1)+"!") ;
         var audio1= new Audio("./sounds/"+au_files[index]);
-        audio1.play();}
+        audio1.play();
+        buttonAnimation(buttons[index].innerHTML);}
         //console.log();
 )
 
@@ -18,6 +21,7 @@ for (let index = 0; index < buttons.length; index++) {
         })
 
 function makeSound(x){
+    buttonAnimation(x)
     switch (x) {
         case keysPress[0]:
             var audio1= new Audio("./sounds/"+au_files[0]);
@@ -57,4 +61,12 @@ function makeSound(x){
         default:
             break;
     }
+}
+
+function buttonAnimation(y) {
+    var activeButton = document.querySelector("."+y);
+    activeButton.classList.add('pressed');
+    setTimeout(function () {
+        
+    activeButton.classList.remove('pressed')},50)
 }
